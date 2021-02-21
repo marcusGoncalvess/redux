@@ -7,6 +7,7 @@ import {
   addProductToCartSuccess,
   addProductToCartFailure,
 } from './actions';
+import { ActionTypes } from './types';
 
 type CheckProductStockRequest = ReturnType<typeof addProductToCartRequest>;
 
@@ -39,5 +40,5 @@ function* checkProductStock({ payload }: CheckProductStockRequest) {
 // takeLatest = se uma requisição nao acabar e vier outra
 // ele vai considerar apenas a ultima
 export default all([
-  takeLatest('ADD_PRODUCT_TO_CART_REQUEST', checkProductStock),
+  takeLatest(ActionTypes.addProductToCartRequest, checkProductStock),
 ]);
